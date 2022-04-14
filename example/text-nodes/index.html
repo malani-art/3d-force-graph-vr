@@ -5,22 +5,82 @@
   <!--<script src="../../dist/3d-force-graph-vr.js"></script>-->
 
   <script src="//unpkg.com/three-spritetext"></script>
+
+  <!--videosphere-->
+  <script id="video" type="text/template">
+    <a-scene>
+      <a-assets>
+        <video id="SphereVideo" autoplay="true" loop= "true" muted crossorigin="anonymous" src="https://static.videezy.com/system/resources/previews/000/012/740/original/Particles_4_-_30s_-_4k_res.mp4">
+      </a-assets>
+      <a-videosphere src ="#SphereVideo"></a-videosphere>
+    </a-scene>
+  </script>
+
 </head>
 
 <body>
+
+
   <div id="3d-graph"></div>
 
   <script>
-    const Graph = ForceGraphVR()
+    const elem = document.getElementById('3d-graph');
+
+    const Graph = ForceGraphVR()(elem)
       (document.getElementById('3d-graph'))
-        .jsonUrl('../datasets/miserables.json')
-        .nodeAutoColorBy('group')
+        .jsonUrl('../datasets/alani.json')
+        .linkDirectionalParticles("value")
+        .linkDirectionalParticleWidth(1)
+        .linkDirectionalParticleColor(() => 'white')
+        .linkDirectionalParticleResolution(10)
+        .linkDirectionalParticleSpeed(d => d.value * 0.002)
+        .linkColor(() => 'white')
+        .linkWidth(0.5)
+        //.nodeAutoColorBy('group')
+
+        //transparent bg
+        .backgroundColor("rgba(0,0,0,0)")
+
         .nodeThreeObject(node => {
+
+          //star sprite
+          const map = new THREE.TextureLoader().load( 'textures/circle.png' );
+          const material = new THREE.SpriteMaterial( { map: map } );
+          const spriteicon = new THREE.Sprite( material );
+          spriteicon.layers.enable(2);
+          spriteicon.scale.set(10, 10, 1);
+
+          //text sprite
           const sprite = new SpriteText(node.id);
-          sprite.color = node.color;
-          sprite.textHeight = 8;
-          return sprite;
+          sprite.layers.enable(2);
+          sprite.color = 'white';
+          sprite.textHeight = 4.5;
+          sprite.strokeWidth = 2;
+          sprite.strokeColor = 'black';
+          sprite.backgroundColor = false;
+          sprite.layers.enable(1);
+
+
+          const group = new THREE.Group();
+          group.add(spriteicon);
+          group.add(sprite);
+
+          
+
+          return group;
+
+
+          
+
+
         });
+        // Graph.innerHTML = document.getElementById('video').innerHTML;
+
 
   </script>
+
+
+
+
+
 </body>

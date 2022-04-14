@@ -32,7 +32,7 @@ export default Kapsule({
     nodeVisibility: { default: true },
     nodeColor: { default: 'color' },
     nodeAutoColorBy: {},
-    nodeOpacity: { default: 0.75 },
+    nodeOpacity: { default: 1 },
     nodeThreeObject: {},
     nodeThreeObjectExtend: { default: false },
     linkSource: { default: 'source' },
@@ -111,11 +111,13 @@ export default Kapsule({
     state.container.appendChild(state.navInfo = document.createElement('div'));
     state.navInfo.className = 'graph-nav-info';
     state.navInfo.textContent = 'Mouse drag: look, gamepad/arrow/wasd keys: move';
-
+    
     // Create scene
     const scene = document.createElement('a-scene');
     scene.setAttribute('embedded', '');
     //scene.setAttribute('stats', null);
+    scene.setAttribute('class','someClass');
+    scene.innerHTML = document.getElementById('video').innerHTML;    
 
     scene.appendChild(state.sky = document.createElement('a-sky'));
     state.sky.setAttribute('radius', 3000);
