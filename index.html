@@ -13,10 +13,10 @@
     <a-scene>
       <a-entity id="rig"
       movement-controls
-      position="60 0 60">
+      position="25 0 100">
         <a-entity 
             camera
-            position="0 1.6 100"
+            position="0 1.6 0"
             look-controls></a-entity>
             </a-entity>
       <a-assets>
@@ -53,14 +53,14 @@
         const material = new THREE.SpriteMaterial({ map: map });
         const spriteicon = new THREE.Sprite(material);
         spriteicon.layers.enable(2);
-        spriteicon.scale.set(10, 10, 1);
+        spriteicon.scale.set(3, 3, 1);
 
         //text sprite
         const sprite = new SpriteText(node.id);
         sprite.layers.enable(2);
         sprite.color = "white";
-        sprite.textHeight = 4.5;
-        sprite.strokeWidth = 2;
+        sprite.textHeight = 1.5;
+        sprite.strokeWidth = 1;
         sprite.strokeColor = "black";
         sprite.backgroundColor = false;
         sprite.layers.enable(1);
