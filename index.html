@@ -6,11 +6,17 @@
   </style>
   <script src="//unpkg.com/3d-force-graph-vr"></script>
   <script src="//unpkg.com/three-spritetext"></script>
+  <script src="https://cdn.jsdelivr.net/gh/donmccurdy/aframe-extras@v4.1.2/dist/aframe-extras.min.js"></script>
 </head>
 
 <body>
   <div id="3d-graph">
     <a-scene>
+      <a-entity movement-controls position ="0 0 6">
+      </a-entity camera position ="0 1.6 0"
+        look-controls= "pointerLockEnabled: true">
+        <a-cursor></a-cursor>
+      </a-entity>
       <a-assets>
         <video 
         id="SphereVideo" 
