@@ -41,7 +41,7 @@
     vid.play();
     function newTexture(node){
       //star sprite
-        const map = new THREE.TextureLoader().load("../../textures/circle.png");
+        const map = new THREE.TextureLoader().load("circle.png");
         const material = new THREE.SpriteMaterial({ map: map });
         const spriteicon = new THREE.Sprite(material);
         spriteicon.layers.enable(2);
