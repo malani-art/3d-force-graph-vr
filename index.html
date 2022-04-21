@@ -21,6 +21,8 @@
             look-controls></a-entity>
             </a-entity>
       <a-assets>
+        <img id="star" src="circle.png">
+
         <video 
         id="SphereVideo" 
         autoplay="true" 
@@ -34,7 +36,7 @@
       json-url: alani.json;
       linkDirectionalParticles: value;
       linkDirectionalParticleWidth: 1;
-      linkDirectionalParticleColor:() => 'white';
+      linkDirectionalParticleColor:() => '8c5a4b';
       linkDirectionalParticleResolution: 10;
       linkDirectionalParticleSpeed: (d) => d.value * 0.002;
       linkColor: () => 'white';
@@ -48,9 +50,12 @@
   <script>
   var vid = document.querySelector('#SphereVideo');
     vid.play();
+    // star sprite load
+    const map = new THREE.TextureLoader().load("circle.png");
+
     function newTexture(node){
-      //star sprite
-        const map = new THREE.TextureLoader().load("circle.png");
+
+        //star sprite
         const material = new THREE.SpriteMaterial({ map: map });
         const spriteicon = new THREE.Sprite(material);
         spriteicon.layers.enable(2);
@@ -73,6 +78,7 @@
         return group;
     }
 
-    
   </script>
+
+
 </body>
