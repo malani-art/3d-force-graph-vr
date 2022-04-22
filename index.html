@@ -13,14 +13,16 @@
     <a-scene>
       <a-entity id="rig"
       movement-controls
-      speed = 50
-      fly = true
       position="25 0 100">
         <a-entity 
             camera
             position="0 1.6 0"
             look-controls></a-entity>
             </a-entity>
+
+            <a-entity movement-controls="fly: true;
+                 movementEasing: 15;
+                 movementAcceleration: 80;"></a-entity>
       <a-assets>
         <img id="star" src="circle.png">
 
