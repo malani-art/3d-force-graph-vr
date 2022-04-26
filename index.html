@@ -28,17 +28,17 @@
         <video 
         id="SphereVideo" 
         autoplay="true" 
-        loop= "true" 
-        muted 
-        crossorigin="anonymous" 
-        src="https://heetonline.com/maysamalani/Astrolobi_Cam360.mp4">
+        loop= "true"  
+        crossorigin="anonymous"
+        playsinline=""
+        src="https://heetonline.com/maysamalani/FC_April25_6.mp4">
       </a-assets>
-      <a-videosphere src ="#SphereVideo"></a-videosphere>
+      <a-videosphere src ="#SphereVideo" radius="10000"></a-videosphere>
       <a-entity forcegraph="
-      json-url: alani.json;
+      json-url: alani_2.json;
       linkDirectionalParticles: value;
       linkDirectionalParticleWidth: 1;
-      linkDirectionalParticleColor:() => '8c5a4b';
+      linkDirectionalParticleColor:() => '4267FF';
       linkDirectionalParticleResolution: 10;
       linkDirectionalParticleSpeed: (d) => d.value * 0.002;
       linkColor: () => 'white';
@@ -50,8 +50,19 @@
   </div>
 
   <script>
-  var vid = document.querySelector('#SphereVideo');
-    vid.play();
+
+document.addEventListener('click', videoPlay);
+var vid = document.querySelector('#SphereVideo');
+vid.load();
+
+function videoPlay() {
+    if ( vid.readyState === 4 ) {   
+  
+      document.removeEventListener('click', vid.play()) }
+
+
+}
+
     // star sprite load
     const map = new THREE.TextureLoader().load("circle.png");
 
